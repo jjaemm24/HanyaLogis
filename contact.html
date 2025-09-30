@@ -50,25 +50,26 @@
 
   <!-- 문의 카드 -->
   <div class="quote-request-form mx-auto">
-    <form id="quoteForm" class="grid-form">
+    <form id="quoteForm" class="grid-form" name="contact" method="POST" data-netlify="true">
       <div class="grid-container">
         <div class="left-name">
-          <input type="text" id="name" class="form-control" placeholder="회사명" required>
+          <input type="text" name="name" class="form-control" placeholder="회사명" required>
         </div>
         <div class="left-phone">
-          <input type="tel" id="phone" class="form-control" placeholder="전화번호" required>
+          <input type="tel" name="phone" class="form-control" placeholder="전화번호" required>
         </div>
         <div class="left-email">
-          <input type="email" id="email" class="form-control" placeholder="이메일" required>
+          <input type="email" name="email" class="form-control" placeholder="이메일" required>
         </div>
         <div class="right-message">
-          <textarea id="message" class="form-control" placeholder="문의내용" required></textarea>
+          <textarea name="message" class="form-control" placeholder="문의내용" required></textarea>
         </div>
       </div>
       <div class="text-center mt-4">
         <button type="submit" class="btn submit-btn">문의하기</button>
       </div>
     </form>
+
   </div>
 
   <!-- 지도 -->
@@ -107,49 +108,6 @@
 
     <!-- bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-   <script>
-document.getElementById("quoteForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
-  const data = {
-    name: document.getElementById("name").value,
-    phone: document.getElementById("phone").value,
-    email: document.getElementById("email").value,
-    message: document.getElementById("message").value
-  };
-
-  try {
-    const res = await fetch("/.netlify/functions/sendMessage", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    });
-
-    const text = await res.text();  // 항상 텍스트로 읽기
-    console.log("응답 내용:", text); // 콘솔에 출력
-
-    let resData;
-    try {
-      resData = JSON.parse(text);
-    } catch {
-      resData = { message: text };
-    }
-
-    if (res.ok && resData.success) {
-      alert("카톡 전송 성공!");
-      document.getElementById("quoteForm").reset();
-    } else {
-      console.error("전송 실패:", resData);
-      alert("전송 실패 😢\n콘솔 확인");
-    }
-
-  } catch (err) {
-    console.error("Fetch 에러:", err);
-    alert("전송 중 오류 발생 😢\n콘솔 확인");
-  }
-});
-
-</script>
 
 </body>
 </html>
