@@ -653,4 +653,16 @@
 }
 
 
+/* 모달 꾸미기 */
+.modal-content {
+  border-radius: 1rem;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+  background: #fff; /* 모달은 항상 흰색 */
+}
+
+.modal-backdrop.show {
+  opacity: 0.7; /* 배경 어두워지기 */
+}
+
+
 
