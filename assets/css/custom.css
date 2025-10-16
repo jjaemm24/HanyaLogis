@@ -1,3 +1,22 @@
+/* Noto Sans KR - 구글 웹폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+/* S-Core Dream - Noonnu CDN */
+@font-face {
+  font-family: 'S-CoreDream-5Medium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 전체 기본 폰트 */
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #333;
+}
+
 /* 네비게이션바 글자 크기와 스타일 */
 .navbar .nav-link {
   font-size: 1.2rem;       /* 글자 크기 증가 */
@@ -664,5 +683,49 @@
   opacity: 0.7; /* 배경 어두워지기 */
 }
 
+
+.kakao-float-btn {
+  position: fixed;
+  bottom: 5%;
+  right: 3%;
+  background-color: #FEE500;
+  color: #000;
+  font-weight: bold;
+
+  /* 글자 크기: 최소 16px, 최적 2vw, 최대 24px */
+  font-size: clamp(16px, 2vw, 24px);
+
+  /* 버튼 크기: 최소/최대 width/height + 내부 padding */
+  padding: 15px 30px;
+  min-width: 150px;
+  max-width: 250px;
+  min-height: 50px;
+  max-height: 80px;
+
+  border-radius: 30px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  z-index: 1000;
+  transition: all 0.2s ease-in-out;
+}
+
+.kakao-float-btn:hover {
+  background-color: #fdd835;
+  transform: translateY(-3px);
+}
+
+
+@media (max-width: 480px) {
+  .kakao-float-btn {
+    font-size: 16px;
+    padding: 12px 20px;
+    min-width: 120px;
+    min-height: 45px;
+  }
+}
 
 
