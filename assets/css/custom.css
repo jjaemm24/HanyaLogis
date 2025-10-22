@@ -729,3 +729,6 @@ body {
 }
 
 
+:root {
+  color-scheme: light !important;
+}
